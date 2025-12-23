@@ -782,7 +782,6 @@ p {
     /* Firefox */
     -ms-overflow-style: none;
     /* IE and Edge */
-    justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     width: 100%;
@@ -1727,10 +1726,10 @@ p {
     }
 
     .visuals-reels {
-        justify-content: center;
         gap: 1.25rem;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         max-width: 100%;
+        overflow-x: auto;
     }
 
     .visuals-reel {
@@ -1835,11 +1834,12 @@ p {
     }
 
     .visuals-reels {
-        justify-content: center;
         gap: 1rem;
         padding: 1rem 0.5rem;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         max-width: 100%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
     }
 
     .visuals-reel {
@@ -1847,6 +1847,7 @@ p {
         max-width: 250px;
         height: 420px;
         flex-shrink: 0;
+        scroll-snap-align: center;
     }
 
     .visuals-nav {
@@ -1907,15 +1908,18 @@ p {
         padding: 0 1.5rem;
     }
 
-    /* Center single reel on very small screens */
+    /* Horizontal scrolling on small screens */
     .visuals-reels {
-        justify-content: center;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scroll-snap-type: x mandatory;
     }
 
     .visuals-reel {
         min-width: 280px;
         max-width: 280px;
         height: 460px;
+        scroll-snap-align: center;
     }
 }
 
@@ -1925,6 +1929,13 @@ p {
         min-width: 240px;
         max-width: 240px;
         height: 400px;
+        scroll-snap-align: center;
+    }
+
+    .visuals-reels {
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        flex-wrap: nowrap;
     }
 
     .visuals-reels-container {
