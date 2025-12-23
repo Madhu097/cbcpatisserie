@@ -120,37 +120,37 @@ menuTabs.forEach(tab => {
 // ===================================
 const galleryGrid = document.getElementById('galleryGrid');
 
-// Gallery images data (placeholder - will be replaced with actual images)
+// Gallery images data
 const galleryImages = [
     {
-        title: 'Fresh Coffee',
-        category: 'beverages',
-        color: '#8B4513'
-    },
-    {
-        title: 'Chocolate Cake',
-        category: 'cakes',
-        color: '#6B3410'
-    },
-    {
-        title: 'Croissants',
+        title: 'Artisan Bread & Croissants',
         category: 'bakery',
-        color: '#D4A574'
+        image: 'assets/gallery/bakery_quality_1.png'
     },
     {
-        title: 'Artisan Bread',
-        category: 'bakery',
-        color: '#A0522D'
-    },
-    {
-        title: 'Cupcakes',
+        title: 'French Pastries & Macarons',
         category: 'desserts',
-        color: '#E8C4A0'
+        image: 'assets/gallery/pastries_quality_2.png'
     },
     {
-        title: 'Café Interior',
+        title: 'Gourmet Cupcakes',
+        category: 'cakes',
+        image: 'assets/gallery/cupcakes_quality_3.png'
+    },
+    {
+        title: 'Cozy Café Ambience',
         category: 'ambience',
-        color: '#8B4513'
+        image: 'assets/gallery/ambience_quality_4.png'
+    },
+    {
+        title: 'Premium Coffee',
+        category: 'beverages',
+        image: 'assets/gallery/bakery_quality_1.png' // Reusing for now
+    },
+    {
+        title: 'Fresh Baked Goods',
+        category: 'bakery',
+        image: 'assets/gallery/pastries_quality_2.png' // Reusing for now
     }
 ];
 
@@ -162,14 +162,8 @@ function generateGallery() {
         galleryItem.style.animationDelay = `${index * 0.1}s`;
 
         galleryItem.innerHTML = `
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, ${image.color} 0%, ${adjustColor(image.color, 30)} 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600; text-align: center; padding: 2rem;">
-                ${image.title}
-                <br>
-                <small style="font-size: 0.9rem; opacity: 0.8; display: block; margin-top: 0.5rem;">Image Placeholder</small>
-            </div>
-            <div class="gallery-overlay">
-                <i class="fas fa-search-plus"></i>
-            </div>
+            <img src="${image.image}" alt="${image.title}" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="gallery-overlay"></div>
         `;
 
         galleryGrid.appendChild(galleryItem);

@@ -1247,7 +1247,7 @@ p {
 }
 
 .gallery-item:hover {
-    transform: scale(1.08) rotate(2deg);
+    transform: scale(1.05);
     box-shadow: var(--shadow-xl);
     z-index: 10;
 }
@@ -1260,7 +1260,7 @@ p {
 }
 
 .gallery-item:hover img {
-    transform: scale(1.2);
+    transform: scale(1.15);
 }
 
 .gallery-overlay {
@@ -1269,22 +1269,13 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--gradient-primary);
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
+    pointer-events: none;
     transition: var(--transition);
-}
-
-.gallery-item:hover .gallery-overlay {
-    opacity: 0.9;
-}
-
-.gallery-overlay i {
-    color: white;
-    font-size: 4rem;
-    animation: zoomIn 0.5s ease-out;
 }
 
 @keyframes zoomIn {
