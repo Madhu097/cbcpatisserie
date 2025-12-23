@@ -156,6 +156,11 @@ const galleryImages = [
 
 // Generate gallery items
 function generateGallery() {
+    if (!galleryGrid) {
+        console.error('Gallery grid element not found');
+        return;
+    }
+    
     galleryImages.forEach((image, index) => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
@@ -179,8 +184,10 @@ function adjustColor(color, amount) {
     return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
 }
 
-// Initialize gallery
-generateGallery();
+// Initialize gallery when DOM is ready
+if (galleryGrid) {
+    generateGallery();
+}
 
 // ===================================
 // Scroll Reveal Animation
