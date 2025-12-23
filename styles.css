@@ -603,7 +603,7 @@ p {
    =================================== */
 .about {
     padding: 8rem 0;
-    background: var(--light);
+    background: #F4E1D3;
     position: relative;
 }
 
@@ -722,7 +722,7 @@ p {
    =================================== */
 .visuals {
     padding: 8rem 0;
-    background: linear-gradient(180deg, var(--light) 0%, var(--accent) 100%);
+    background: #FBF2EA;
     position: relative;
     overflow: hidden;
 }
@@ -959,7 +959,7 @@ p {
    =================================== */
 .menu {
     padding: 8rem 0;
-    background: linear-gradient(180deg, var(--light) 0%, #f1f5f9 100%);
+    background: #F4E1D3;
 }
 
 .menu-tabs {
@@ -1227,7 +1227,7 @@ p {
    =================================== */
 .gallery {
     padding: 8rem 0;
-    background: var(--light);
+    background: #FBF2EA;
 }
 
 .gallery-grid {
@@ -1293,7 +1293,7 @@ p {
    =================================== */
 .reviews {
     padding: 8rem 0;
-    background: linear-gradient(180deg, #f1f5f9 0%, var(--light) 100%);
+    background: #F4E1D3;
 }
 
 .reviews-container {
@@ -1397,7 +1397,7 @@ p {
    =================================== */
 .location {
     padding: 8rem 0;
-    background: var(--light);
+    background: #FBF2EA;
 }
 
 .location-content {
