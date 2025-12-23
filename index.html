@@ -28,8 +28,7 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <i class="fas fa-cookie-bite"></i>
-                <span>CBC Patisserie</span>
+                <img src="assets/logo.png" alt="CBC Patisserie Logo" class="logo-image">
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -121,6 +120,119 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visuals Section -->
+    <section id="visuals" class="visuals">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Visual Journey</span>
+                <h2 class="section-title">Explore our collection in visuals</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="visuals-filters">
+                <button class="visuals-filter active" data-filter="all">All</button>
+                <button class="visuals-filter" data-filter="cakes">Cakes & Pastries</button>
+                <button class="visuals-filter" data-filter="coffee">Coffee & Beverages</button>
+                <button class="visuals-filter" data-filter="bakery">Bakery Items</button>
+                <button class="visuals-filter" data-filter="ambience">Ambience</button>
+            </div>
+
+            <!-- Video Reels Container -->
+            <div class="visuals-reels-container">
+                <button class="visuals-nav visuals-nav-left" aria-label="Scroll left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="visuals-reels">
+                    <!-- Reel 1 - Cakes -->
+                    <div class="visuals-reel" data-category="cakes">
+                        <video class="visuals-video" muted loop playsinline>
+                            <source src="assets/video.mp4" type="video/mp4">
+                        </video>
+                        <div class="visuals-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="visuals-badge">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <div class="visuals-overlay">
+                            <h4>Cakes & Pastries</h4>
+                        </div>
+                    </div>
+
+                    <!-- Reel 2 - Coffee -->
+                    <div class="visuals-reel" data-category="coffee">
+                        <video class="visuals-video" muted loop playsinline>
+                            <source src="assets/video.mp4" type="video/mp4">
+                        </video>
+                        <div class="visuals-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="visuals-badge">
+                            <i class="fas fa-mug-hot"></i>
+                        </div>
+                        <div class="visuals-overlay">
+                            <h4>Coffee & Beverages</h4>
+                        </div>
+                    </div>
+
+                    <!-- Reel 3 - Bakery -->
+                    <div class="visuals-reel" data-category="bakery">
+                        <video class="visuals-video" muted loop playsinline>
+                            <source src="assets/video.mp4" type="video/mp4">
+                        </video>
+                        <div class="visuals-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="visuals-badge">
+                            <i class="fas fa-bread-slice"></i>
+                        </div>
+                        <div class="visuals-overlay">
+                            <h4>Bakery Items</h4>
+                        </div>
+                    </div>
+
+                    <!-- Reel 4 - Ambience -->
+                    <div class="visuals-reel" data-category="ambience">
+                        <video class="visuals-video" muted loop playsinline>
+                            <source src="assets/video.mp4" type="video/mp4">
+                        </video>
+                        <div class="visuals-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="visuals-badge">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="visuals-overlay">
+                            <h4>Ambience</h4>
+                        </div>
+                    </div>
+
+                    <!-- Reel 5 - Desserts -->
+                    <div class="visuals-reel" data-category="cakes">
+                        <video class="visuals-video" muted loop playsinline>
+                            <source src="assets/video.mp4" type="video/mp4">
+                        </video>
+                        <div class="visuals-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="visuals-badge">
+                            <i class="fas fa-ice-cream"></i>
+                        </div>
+                        <div class="visuals-overlay">
+                            <h4>Desserts</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="visuals-nav visuals-nav-right" aria-label="Scroll right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -581,8 +693,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <i class="fas fa-cookie-bite"></i>
-                    <span>CBC Patisserie</span>
+                    <img src="assets/logo.png" alt="CBC Patisserie Logo" class="logo-image">
                 </div>
                 <p class="footer-tagline">Baked with Love, Brewed with Care</p>
                 <p class="footer-copyright">&copy; 2024 CBC Patisserie. All rights reserved.</p>

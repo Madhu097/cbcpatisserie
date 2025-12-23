@@ -488,3 +488,120 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+// ===================================
+// Visuals Section - Video Reels
+// ===================================
+document.addEventListener('DOMContentLoaded', () => {
+    const visualsFilters = document.querySelectorAll('.visuals-filter');
+    const visualsReels = document.querySelectorAll('.visuals-reel');
+    const reelsContainer = document.querySelector('.visuals-reels');
+    const navLeft = document.querySelector('.visuals-nav-left');
+    const navRight = document.querySelector('.visuals-nav-right');
+
+    // Detect if device is mobile
+    const isMobile = () => window.innerWidth <= 968;
+
+    // Filter functionality
+    visualsFilters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            const filterValue = filter.getAttribute('data-filter');
+
+            // Update active filter
+            visualsFilters.forEach(f => f.classList.remove('active'));
+            filter.classList.add('active');
+
+            // Filter reels
+            visualsReels.forEach(reel => {
+                const reelCategory = reel.getAttribute('data-category');
+
+                if (filterValue === 'all' || reelCategory === filterValue) {
+                    reel.style.display = 'block';
+                    setTimeout(() => {
+                        reel.style.opacity = '1';
+                        reel.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    reel.style.opacity = '0';
+                    reel.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        reel.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+
+    // Navigation buttons
+    if (navLeft && reelsContainer) {
+        navLeft.addEventListener('click', () => {
+            reelsContainer.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    if (navRight && reelsContainer) {
+        navRight.addEventListener('click', () => {
+            reelsContainer.scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Video play/pause functionality
+    visualsReels.forEach(reel => {
+        const video = reel.querySelector('.visuals-video');
+        const playBtn = reel.querySelector('.visuals-play-btn');
+
+        // Play button click (for mobile and desktop)
+        if (playBtn) {
+            playBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (video.paused) {
+                    video.play();
+                    reel.classList.add('playing');
+                } else {
+                    video.pause();
+                    reel.classList.remove('playing');
+                }
+            });
+        }
+
+        // Desktop: Hover to play
+        if (!isMobile()) {
+            reel.addEventListener('mouseenter', () => {
+                video.play();
+                reel.classList.add('playing');
+            });
+
+            reel.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0; // Reset to beginning
+                reel.classList.remove('playing');
+            });
+        }
+
+        // Video ended event
+        video.addEventListener('ended', () => {
+            reel.classList.remove('playing');
+        });
+    });
+
+    // Update behavior on window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // Pause all videos and reset state on resize
+            visualsReels.forEach(reel => {
+                const video = reel.querySelector('.visuals-video');
+                video.pause();
+                video.currentTime = 0;
+                reel.classList.remove('playing');
+            });
+        }, 250);
+    });
+});
