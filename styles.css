@@ -1801,9 +1801,10 @@ p {
 .footer {
     background: linear-gradient(135deg, #2C1810 0%, #1a0f0a 100%);
     color: white;
-    padding: 5rem 0 0;
+    padding: 2rem 0 0;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .footer::before {
@@ -1819,14 +1820,17 @@ p {
 .footer-main {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 4rem;
-    padding-bottom: 3rem;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 100%;
 }
 
 .footer-column {
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .footer-brand {
@@ -1834,12 +1838,12 @@ p {
 }
 
 .footer-logo {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .footer-logo .logo-image {
-    height: 250px;
-    max-height: 250px;
+    height: 50px;
+    max-height: 50px;
     width: auto;
     object-fit: contain;
     filter: brightness(1.3) drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
@@ -1855,7 +1859,7 @@ p {
     font-family: var(--font-heading);
     font-style: italic;
     font-size: 1.1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
     color: var(--primary);
     font-weight: 600;
 }
@@ -1864,7 +1868,7 @@ p {
     font-size: 0.95rem;
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
 }
 
 .footer-social {
@@ -1923,7 +1927,7 @@ p {
 }
 
 .footer-links li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
 }
 
 .footer-links a {
@@ -1953,10 +1957,12 @@ p {
 .footer-contact li {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.8rem;
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.95rem;
     line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .footer-contact i {
@@ -1966,18 +1972,24 @@ p {
     flex-shrink: 0;
 }
 
+.footer-contact span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
 .footer-hours li {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    gap: 0.2rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.6rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-hours li:last-child {
     border-bottom: none;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.8rem;
 }
 
 .footer-hours .day {
@@ -2152,6 +2164,26 @@ p {
         width: 45px;
         height: 45px;
     }
+
+    /* Footer responsive for tablets */
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo .logo-image {
+        height: 150px;
+        max-height: 150px;
+    }
 }
 
 @media (max-width: 968px) {
@@ -2309,22 +2341,54 @@ p {
     }
 
     /* Footer responsive */
+    .footer {
+        padding: 3rem 0 0;
+    }
+
     .footer-main {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .footer-column {
+        text-align: center;
     }
 
     .footer-brand {
         max-width: 100%;
-        text-align: center;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo {
+        margin-bottom: 1rem;
     }
 
     .footer-logo .logo-image {
-        height: 100px;
+        height: 120px;
+        max-height: 120px;
+    }
+
+    .footer-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
     }
 
     .footer-social {
         justify-content: center;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .footer-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+        text-align: center;
     }
 
     .footer-title::after {
@@ -2338,22 +2402,52 @@ p {
         text-align: center;
     }
 
+    .footer-links li {
+        margin-bottom: 0.6rem;
+    }
+
     .footer-links a {
         justify-content: center;
+        font-size: 0.9rem;
     }
 
     .footer-contact li {
         justify-content: center;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-hours li {
+        align-items: center;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .footer-hours .day,
+    .footer-hours .time {
+        font-size: 0.9rem;
     }
 
     .footer-cta-btn {
         width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
         justify-content: center;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
     }
 
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem 0;
+        gap: 0.8rem;
+    }
+
+    .footer-copyright,
+    .footer-bottom-links a {
+        font-size: 0.85rem;
     }
 
     /* Horizontal scrolling on small screens */
