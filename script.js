@@ -116,78 +116,144 @@ menuTabs.forEach(tab => {
 });
 
 // ===================================
-// Gallery Generation
+// Gallery Generation - Scattered Collage
 // ===================================
 const galleryGrid = document.getElementById('galleryGrid');
 
-// Gallery images data
+// Gallery images data - Using Unsplash for high-quality images
 const galleryImages = [
     {
         title: 'Artisan Bread & Croissants',
-        category: 'bakery',
-        image: 'assets/gallery/bakery_quality_1.png'
+        image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop'
     },
     {
-        title: 'French Pastries & Macarons',
-        category: 'desserts',
-        image: 'assets/gallery/pastries_quality_2.png'
+        title: 'French Pastries',
+        image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=600&fit=crop'
     },
     {
         title: 'Gourmet Cupcakes',
-        category: 'cakes',
-        image: 'assets/gallery/cupcakes_quality_3.png'
+        image: 'https://images.unsplash.com/photo-1587668178277-295251f900ce?w=700&h=500&fit=crop'
     },
     {
         title: 'Cozy Café Ambience',
-        category: 'ambience',
-        image: 'assets/gallery/ambience_quality_4.png'
+        image: 'https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=400&h=400&fit=crop'
     },
     {
         title: 'Premium Coffee',
-        category: 'beverages',
-        image: 'assets/gallery/bakery_quality_1.png' // Reusing for now
+        image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=550&h=700&fit=crop'
     },
     {
         title: 'Fresh Baked Goods',
-        category: 'bakery',
-        image: 'assets/gallery/pastries_quality_2.png' // Reusing for now
+        image: 'https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=500&h=400&fit=crop'
+    },
+    {
+        title: 'Chocolate Cake',
+        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=450&h=550&fit=crop'
+    },
+    {
+        title: 'Espresso',
+        image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=650&h=500&fit=crop'
+    },
+    {
+        title: 'Macarons',
+        image: 'https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500&h=650&fit=crop'
+    },
+    {
+        title: 'Latte Art',
+        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=450&fit=crop'
+    },
+    {
+        title: 'Donuts',
+        image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=450&h=550&fit=crop'
+    },
+    {
+        title: 'Cookies',
+        image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=550&h=450&fit=crop'
     }
 ];
 
-// Generate gallery items
+// Generate gallery items with scattered layout
 function generateGallery() {
     if (!galleryGrid) {
         console.error('Gallery grid element not found');
         return;
     }
-    
+
     galleryImages.forEach((image, index) => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
-        galleryItem.style.animationDelay = `${index * 0.1}s`;
+        galleryItem.setAttribute('data-index', index);
 
         galleryItem.innerHTML = `
-            <img src="${image.image}" alt="${image.title}" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="gallery-overlay"></div>
+            <img src="${image.image}" alt="${image.title}" loading="lazy">
+            <div class="gallery-overlay">
+                <h4>${image.title}</h4>
+            </div>
         `;
+
+        // Add click event for lightbox
+        galleryItem.addEventListener('click', () => openLightbox(index));
 
         galleryGrid.appendChild(galleryItem);
     });
 }
 
-// Helper function to adjust color brightness
-function adjustColor(color, amount) {
-    const num = parseInt(color.replace('#', ''), 16);
-    const r = Math.min(255, Math.max(0, (num >> 16) + amount));
-    const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amount));
-    const b = Math.min(255, Math.max(0, (num & 0x0000FF) + amount));
-    return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+// Lightbox functionality
+function createLightbox() {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'gallery-lightbox';
+    lightbox.id = 'galleryLightbox';
+
+    lightbox.innerHTML = `
+        <button class="gallery-lightbox-close" aria-label="Close lightbox">
+            <i class="fas fa-times"></i>
+        </button>
+        <img src="" alt="">
+    `;
+
+    document.body.appendChild(lightbox);
+
+    // Close lightbox on click
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target.classList.contains('gallery-lightbox-close') || e.target.closest('.gallery-lightbox-close')) {
+            closeLightbox();
+        }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+}
+
+function openLightbox(index) {
+    const lightbox = document.getElementById('galleryLightbox');
+    const img = lightbox.querySelector('img');
+
+    img.src = galleryImages[index].image;
+    img.alt = galleryImages[index].title;
+    lightbox.classList.add('active');
+
+    // Prevent body scroll when lightbox is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('galleryLightbox');
+    lightbox.classList.remove('active');
+
+    // Re-enable body scroll
+    document.body.style.overflow = '';
 }
 
 // Initialize gallery when DOM is ready
 if (galleryGrid) {
     generateGallery();
+    createLightbox();
 }
+
 
 // ===================================
 // Scroll Reveal Animation
