@@ -115,6 +115,28 @@ menuTabs.forEach(tab => {
     });
 });
 
+// Menu Navigation Arrows
+const menuNavLeft = document.querySelector('.menu-nav-left');
+const menuNavRight = document.querySelector('.menu-nav-right');
+
+if (menuNavLeft && menuNavRight) {
+    menuNavLeft.addEventListener('click', () => {
+        const activeTab = document.querySelector('.menu-tab.active');
+        const allTabs = Array.from(menuTabs);
+        const currentIndex = allTabs.indexOf(activeTab);
+        const previousIndex = (currentIndex - 1 + allTabs.length) % allTabs.length;
+        allTabs[previousIndex].click();
+    });
+
+    menuNavRight.addEventListener('click', () => {
+        const activeTab = document.querySelector('.menu-tab.active');
+        const allTabs = Array.from(menuTabs);
+        const currentIndex = allTabs.indexOf(activeTab);
+        const nextIndex = (currentIndex + 1) % allTabs.length;
+        allTabs[nextIndex].click();
+    });
+}
+
 // ===================================
 // Gallery Generation - Scattered Collage
 // ===================================
@@ -124,51 +146,55 @@ const galleryGrid = document.getElementById('galleryGrid');
 const galleryImages = [
     {
         title: 'Artisan Bread & Croissants',
-        image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop'
+        image: 'assets/gallery/img1.png'
     },
     {
         title: 'French Pastries',
-        image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=600&fit=crop'
+        image: 'assets/gallery/2.png'
     },
     {
         title: 'Gourmet Cupcakes',
-        image: 'https://images.unsplash.com/photo-1587668178277-295251f900ce?w=700&h=500&fit=crop'
+        image: 'assets/gallery/3.png'
     },
     {
         title: 'Cozy Café Ambience',
-        image: 'https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=400&h=400&fit=crop'
+        image: 'assets/gallery/4.png'
     },
     {
         title: 'Premium Coffee',
-        image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=550&h=700&fit=crop'
+        image: 'assets/gallery/5.png'
     },
     {
         title: 'Fresh Baked Goods',
-        image: 'https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=500&h=400&fit=crop'
+        image: 'assets/gallery/6.png'
     },
     {
         title: 'Chocolate Cake',
-        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=450&h=550&fit=crop'
+        image: 'assets/gallery/7.png'
     },
     {
         title: 'Espresso',
-        image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=650&h=500&fit=crop'
+        image: 'assets/gallery/8.png'
     },
     {
         title: 'Macarons',
-        image: 'https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500&h=650&fit=crop'
+        image: 'assets/gallery/9.png'
     },
     {
         title: 'Latte Art',
-        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=450&fit=crop'
+        image: 'assets/gallery/10.png'
     },
     {
         title: 'Donuts',
-        image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=450&h=550&fit=crop'
+        image: 'assets/gallery/11.png'
     },
     {
         title: 'Cookies',
-        image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=550&h=450&fit=crop'
+        image: 'assets/gallery/12.png'
+    },
+     {
+        title: 'Cookies',
+        image: 'assets/gallery/13.png'
     }
 ];
 
@@ -186,9 +212,6 @@ function generateGallery() {
 
         galleryItem.innerHTML = `
             <img src="${image.image}" alt="${image.title}" loading="lazy">
-            <div class="gallery-overlay">
-                <h4>${image.title}</h4>
-            </div>
         `;
 
         // Add click event for lightbox
