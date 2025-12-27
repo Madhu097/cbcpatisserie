@@ -2344,9 +2344,7 @@ p {
     }
 
     .menu-nav-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 0.9rem;
+        display: none;
     }
 
     .menu-tabs {
@@ -2438,6 +2436,11 @@ p {
 
     .gallery-grid {
         min-height: 800px;
+        padding: 1.5rem;
+    }
+
+    .gallery-item {
+        padding: 10px;
     }
 
     .gallery-item:nth-child(1) {
@@ -2445,6 +2448,7 @@ p {
         top: 5%;
         width: 240px;
         height: 280px;
+        transform: rotate(-8deg);
     }
 
     .gallery-item:nth-child(2) {
@@ -2452,6 +2456,7 @@ p {
         top: 2%;
         width: 180px;
         height: 240px;
+        transform: rotate(5deg);
     }
 
     .gallery-item:nth-child(3) {
@@ -2459,6 +2464,7 @@ p {
         top: 8%;
         width: 140px;
         height: 160px;
+        transform: rotate(-3deg);
     }
 
     .gallery-item:nth-child(4) {
@@ -2466,6 +2472,7 @@ p {
         top: 25%;
         width: 280px;
         height: 220px;
+        transform: rotate(2deg);
     }
 
     .gallery-item:nth-child(5) {
@@ -2473,6 +2480,7 @@ p {
         top: 20%;
         width: 180px;
         height: 240px;
+        transform: rotate(7deg);
     }
 
     .gallery-item:nth-child(6) {
@@ -2480,6 +2488,7 @@ p {
         top: 45%;
         width: 240px;
         height: 200px;
+        transform: rotate(4deg);
     }
 
     .gallery-item:nth-child(7) {
@@ -2487,6 +2496,7 @@ p {
         top: 50%;
         width: 160px;
         height: 180px;
+        transform: rotate(-6deg);
     }
 
     .gallery-item:nth-child(8) {
@@ -2494,6 +2504,7 @@ p {
         top: 45%;
         width: 260px;
         height: 240px;
+        transform: rotate(-4deg);
     }
 
     .gallery-item:nth-child(9) {
@@ -2501,6 +2512,7 @@ p {
         top: 68%;
         width: 180px;
         height: 160px;
+        transform: rotate(8deg);
     }
 
     .gallery-item:nth-child(10) {
@@ -2508,6 +2520,7 @@ p {
         top: 72%;
         width: 200px;
         height: 180px;
+        transform: rotate(-5deg);
     }
 
     .gallery-item:nth-child(11) {
@@ -2515,6 +2528,7 @@ p {
         top: 75%;
         width: 160px;
         height: 140px;
+        transform: rotate(6deg);
     }
 
     .gallery-item:nth-child(12) {
@@ -2522,6 +2536,7 @@ p {
         top: 88%;
         width: 280px;
         height: 220px;
+        transform: rotate(-2deg);
     }
 
     .container {
